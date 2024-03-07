@@ -31,6 +31,6 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          remoteFiles: ".status.json"
+          remoteFiles: ".status.json;build.js;LICENSE;README.md;*.json;*.sublime-*"
           workingDir: ${{ secrets.DIRECTORY }}
           ignoreSSL: 1
