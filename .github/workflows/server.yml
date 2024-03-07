@@ -1,0 +1,36 @@
+name: Deploy to Hosting
+on:
+  schedule:
+    - cron: "0 1 * * 1,4,6"
+  workflow_dispatch:
+    inputs:
+      Name:
+        description: Main Deploy to Hosting
+        required: true
+        default: 'Main Deploy to Hosting'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.1.1
+
+      - name: Deploy to Hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.DIRECTORY }}
+          local-dir: ./site/
+          state-name: .status.json
+      - name: Remove Status
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.DIRECTORY }}
+          ignoreSSL: 1
