@@ -27,7 +27,6 @@ jobs:
           exclude: |
             .git*
             .git*/**
-            node_modules/**
             Gruntfile.js
             *.md
             *.json
