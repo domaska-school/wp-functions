@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.DIRECTORY }}
-          local-dir: ./site/
+          local-dir: ./
           state-name: .status.json
       - name: Remove Status
         uses: StephanThierry/ftp-delete-action@v2.1
