@@ -60,8 +60,9 @@ module.exports = function(grunt) {
 			appjs: {
 				src: [
 					"bower_components/fancybox/src/js/core.js",
-					"bower_components/fancybox/src/js/media.js",
-					//'src/js/media.js',
+					// обработка ссылок на видео
+					// YouTube, RUTUBE, Viemo
+					'media.js',
 					"bower_components/fancybox/src/js/guestures.js",
 					"bower_components/fancybox/src/js/slideshow.js",
 					"bower_components/fancybox/src/js/fullscreen.js",

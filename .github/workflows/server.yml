@@ -28,6 +28,7 @@ jobs:
             .git*
             .git*/**
             Gruntfile.js
+            media.js
             *.md
             *.json
             *.sublime-*
