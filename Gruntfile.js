@@ -2,33 +2,9 @@ module.exports = function(grunt) {
 	require('dotenv').config();
 	const DEBUG = parseInt(process.env.DEBUG) || false;
 	var fs = require('fs'),
-		path = require('path'),
-		chalk = require('chalk'),
-		PACK = grunt.file.readJSON('package.json'),
-		uniqid = function () {
-			if(DEBUG){
-				var md5 = require('md5');
-				result = md5((new Date()).getTime()).toString();
-				grunt.verbose.writeln("Generate hash: " + chalk.cyan(result) + " >>> OK");
-				return result;
-			}
-			return `v${PACK.version}`;
-		};
-	
-	String.prototype.hashCode = function() {
-		var hash = 0, i, chr;
-		if (this.length === 0) return hash;
-		for (i = 0; i < this.length; i++) {
-			chr   = this.charCodeAt(i);
-			hash  = ((hash << 5) - hash) + chr;
-			hash |= 0; // Convert to 32bit integer
-		}
-		return hash;
-	};
+		path = require('path');
 	
 	var gc = {
-		assets: "",
-		gosave: "",
 		default: [
 			"clean:all",
 			"concat",
@@ -77,6 +53,12 @@ module.exports = function(grunt) {
 					'main.js'
 				],
 				dest: 'test/js/main.js'
+			},
+			css: {
+				src: [
+					'bower_components/fancybox/src/css/*.css'
+				],
+				dest: 'test/css/jquery.fancybox.css'
 			}
 		},
 		uglify: {
@@ -101,7 +83,7 @@ module.exports = function(grunt) {
 						dest: __dirname,
 						filter: 'isFile',
 						rename: function (dst, src) {
-							return path.join(dst, src.replace('.js', '.min.js'));
+							return path.normalize(path.join(dst, src.replace('.js', '.min.js')));
 						}
 					}
 				]
@@ -131,14 +113,18 @@ module.exports = function(grunt) {
 				files: {
 					'test/css/prefix.main.css' : [
 						'test/css/main.css'
-					]
+					],
+					'test/css/prefix.jquery.fancybox.css' : [
+						'test/css/jquery.fancybox.css'
+					],
 				}
 			}
 		},
 		group_css_media_queries: {
 			group: {
 				files: {
-					'main.css': ['test/css/prefix.main.css']
+					'main.css': ['test/css/prefix.main.css'],
+					'jquery.fancybox.css': ['test/css/prefix.jquery.fancybox.css']
 				}
 			}
 		},
@@ -149,7 +135,8 @@ module.exports = function(grunt) {
 			},
 			minify: {
 				files: {
-					'main.min.css' : ['main.css']
+					'main.min.css' : ['main.css'],
+					'jquery.fancybox.min.css' : ['jquery.fancybox.css']
 				}
 			}
 		}
