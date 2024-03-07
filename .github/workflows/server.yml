@@ -28,7 +28,7 @@ jobs:
             .git*
             .git*/**
             node_modules/**
-            build.js
+            Gruntfile.js
             *.md
             *.json
             *.sublime-*

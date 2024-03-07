@@ -1,0 +1,20 @@
+{
+  "name": "domashkashot",
+  "description": "Не нужно думать зачем.",
+  "main": "Gruntfile.js",
+  "authors": [
+    "ProjectSoft <projectsoft2009@yandex.ru>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/domaska-school/wp-functions",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fancybox": "3.5.7"
+  }
+}

@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.fancybox-container {
+  z-index: 999999 !important;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.embed-container {
+  margin-bottom: 1.5em;
+}
