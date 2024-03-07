@@ -36,7 +36,6 @@ module.exports = function(grunt) {
 			"less",
 			"autoprefixer",
 			"group_css_media_queries",
-			"replace",
 			"cssmin",
 		]
 	};
@@ -138,44 +137,8 @@ module.exports = function(grunt) {
 		group_css_media_queries: {
 			group: {
 				files: {
-					'test/css/media/main.css': ['test/css/prefix.main.css']
+					'main.css': ['test/css/prefix.main.css']
 				}
-			}
-		},
-		replace: {
-			css: {
-				options: {
-					patterns: [
-						{
-							match: /\/\*.+?\*\//gs,
-							replacement: ''
-						},
-						{
-							match: /\r?\n\s+\r?\n/g,
-							replacement: '\n'
-						}
-					]
-				},
-				files: [
-					{
-						expand: true,
-						flatten : true,
-						src: [
-							'test/css/media/main.css'
-						],
-						dest: 'test/css/replace/',
-						filter: 'isFile'
-					},
-					{
-						expand: true,
-						flatten : true,
-						src: [
-							'test/css/media/main.css'
-						],
-						dest: __dirname,
-						filter: 'isFile'
-					}
-				]
 			}
 		},
 		cssmin: {
@@ -185,7 +148,7 @@ module.exports = function(grunt) {
 			},
 			minify: {
 				files: {
-					'main.min.css' : ['test/css/replace/main.css']
+					'main.min.css' : ['main.css']
 				}
 			}
 		}
