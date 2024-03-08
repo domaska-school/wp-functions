@@ -26,7 +26,9 @@ class wpRun {
 		add_filter( 'site_status_page_cache_supported_cache_headers', '__return_false' );
 		
 		// Отключаем сообщение о пропущенном задании
-		define('DISABLE_WP_CRON', true);
+		//define('DISABLE_WP_CRON', true);
+		//remove_action('do_pings', 'do_all_pings');
+		//wp_clear_scheduled_hook('do_pings');
 		
 		// Отключаем RSS комментариев
 		add_filter( 'feed_links_show_comments_feed', '__return_false' );
