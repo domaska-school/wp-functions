@@ -46,13 +46,13 @@ module.exports = function(grunt) {
 					"bower_components/fancybox/src/js/hash.js",
 					"bower_components/fancybox/src/js/wheel.js",
 				],
-				dest: 'test/js/jquery.fancybox.js'
+				dest: 'dest/jquery.fancybox.js'
 			},
 			main: {
 				src: [
-					'main.js'
+					'src/main.js'
 				],
-				dest: 'test/js/main.js'
+				dest: 'dest/main.js'
 			},
 			css: {
 				src: [
@@ -77,10 +77,10 @@ module.exports = function(grunt) {
 						expand: true,
 						flatten : true,
 						src: [
-							'test/js/jquery.fancybox.js',
-							'test/js/main.js'
+							'dest/jquery.fancybox.js',
+							'dest/main.js'
 						],
-						dest: __dirname,
+						dest: path.normalize(path.join(__dirname, 'dest')),
 						filter: 'isFile',
 						rename: function (dst, src) {
 							return path.normalize(path.join(dst, src.replace('.js', '.min.js')));
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
 				},
 				files : {
 					'test/css/main.css' : [
-						'main.less'
+						'src/main.less'
 					]
 				}
 			}
@@ -123,8 +123,8 @@ module.exports = function(grunt) {
 		group_css_media_queries: {
 			group: {
 				files: {
-					'main.css': ['test/css/prefix.main.css'],
-					'jquery.fancybox.css': ['test/css/prefix.jquery.fancybox.css']
+					'dest/main.css': ['test/css/prefix.main.css'],
+					'dest/jquery.fancybox.css': ['test/css/prefix.jquery.fancybox.css']
 				}
 			}
 		},
@@ -135,8 +135,8 @@ module.exports = function(grunt) {
 			},
 			minify: {
 				files: {
-					'main.min.css' : ['main.css'],
-					'jquery.fancybox.min.css' : ['jquery.fancybox.css']
+					'dest/main.min.css' : ['dest/main.css'],
+					'dest/jquery.fancybox.min.css' : ['dest/jquery.fancybox.css']
 				}
 			}
 		}
