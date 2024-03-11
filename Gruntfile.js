@@ -2,21 +2,22 @@ module.exports = function(grunt) {
 	require('dotenv').config();
 	const DEBUG = parseInt(process.env.DEBUG) || false;
 	var fs = require('fs'),
-		path = require('path');
-	
-	var gc = {
-		default: [
-			"clean:all",
-			"concat",
-			"uglify",
-			"less",
-			"autoprefixer",
-			"group_css_media_queries",
-			"cssmin",
-		]
-	};
+		path = require('path'),
+		gc = {
+			default: [
+				"clean:all",
+				"concat",
+				"uglify",
+				"less",
+				"autoprefixer",
+				"group_css_media_queries",
+				"cssmin",
+			]
+		};
+
 	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
+
 	grunt.initConfig({
 		globalConfig : gc,
 		pkg : grunt.file.readJSON('package.json'),
