@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		autoprefixer:{
+		autoprefixer: {
 			options: {
 				browsers: [
 					"last 5 version"
