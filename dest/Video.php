@@ -79,9 +79,9 @@ class Video {
 				$this->videoInfo['id'] = $id;
 				$this->videoInfo['link'] = $this->link;
 				//$json['track_id']
-				$embed = "https://rutube.ru/play/embed/" . $this->videoInfo['id'] . "/";
+				$embed = "https://rutube.ru/play/embed/" . $this->videoInfo['id'] . "/?skinColor=f40092";
 				$this->videoInfo['embed'] = $embed;
-				$this->videoInfo['video'] = '<div class="wp-block-video embed"><div class="embed-responsive embed-responsive-16by9"><iframe src="' . $embed . '" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></div>';
+				$this->videoInfo['video'] = '<div class="wp-block-video embed"><div class="embed-responsive embed-responsive-16by9"><iframe id="' . $id . '" src="' . $embed . '" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div></div>';
 			}else{
 				return array();
 			}
